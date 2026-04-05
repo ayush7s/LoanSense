@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LoanIQ — Instant Loan Approval Prediction</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Background grid -->
+  <div class="bg-grid"></div>
+  <div class="bg-blob b1"></div>
+  <div class="bg-blob b2"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">Loan<span>IQ</span></div>
+    <nav>
+      <a href="#form-section">Apply</a>
+      <a href="#history-section">History</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-tag">AI-Powered Decision Engine</div>
+    <h1>Will Your Loan<br/><span class="accent">Get Approved?</span></h1>
+    <p class="hero-sub">Fill in your details below and get an instant prediction powered by machine learning.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">78%</span><span class="stat-label">Model Accuracy</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">614</span><span class="stat-label">Training Samples</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">&lt;1s</span><span class="stat-label">Prediction Time</span></div>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <section class="form-section" id="form-section">
+    <div class="form-card">
+      <div class="form-header">
+        <h2>Loan Application</h2>
+        <p>All fields are required for accurate prediction</p>
+      </div>
+
+      <div class="form-grid">
+
+        <!-- Personal Info -->
+        <div class="form-group">
+          <label>Gender</label>
+          <div class="toggle-group">
+            <button class="toggle-btn active" data-field="Gender" data-value="1">Male</button>
+            <button class="toggle-btn" data-field="Gender" data-value="0">Female</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Marital Status</label>
+          <div class="toggle-group">
+            <button class="toggle-btn active" data-field="Married" data-value="1">Married</button>
+            <button class="toggle-btn" data-field="Married" data-value="0">Single</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Dependents</label>
+          <div class="toggle-group four">
+            <button class="toggle-btn active" data-field="Dependents" data-value="0">0</button>
+            <button class="toggle-btn" data-field="Dependents" data-value="1">1</button>
+            <button class="toggle-btn" data-field="Dependents" data-value="2">2</button>
+            <button class="toggle-btn" data-field="Dependents" data-value="3">3+</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Education</label>
+          <div class="toggle-group">
+            <button class="toggle-btn active" data-field="Education" data-value="0">Graduate</button>
+            <button class="toggle-btn" data-field="Education" data-value="1">Not Graduate</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Self Employed</label>
+          <div class="toggle-group">
+            <button class="toggle-btn" data-field="Self_Employed" data-value="1">Yes</button>
+            <button class="toggle-btn active" data-field="Self_Employed" data-value="0">No</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Property Area</label>
+          <div class="toggle-group three">
+            <button class="toggle-btn" data-field="Property_Area" data-value="2">Urban</button>
+            <button class="toggle-btn active" data-field="Property_Area" data-value="1">Semiurban</button>
+            <button class="toggle-btn" data-field="Property_Area" data-value="0">Rural</button>
+          </div>
+        </div>
+
+        <!-- Financial Info -->
+        <div class="form-group full">
+          <label>Applicant Monthly Income <span class="unit">₹</span></label>
+          <div class="input-wrap">
+            <input type="number" id="ApplicantIncome" placeholder="e.g. 5000" min="0"/>
+          </div>
+        </div>
+
+        <div class="form-group full">
+          <label>Co-applicant Monthly Income <span class="unit">₹</span> <span class="optional">(0 if none)</span></label>
+          <div class="input-wrap">
+            <input type="number" id="CoapplicantIncome" placeholder="e.g. 2000" min="0" value="0"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Loan Amount <span class="unit">₹ thousands</span></label>
+          <div class="input-wrap">
+            <input type="number" id="LoanAmount" placeholder="e.g. 150" min="0"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Loan Term <span class="unit">months</span></label>
+          <select id="Loan_Amount_Term">
+            <option value="360">360 months (30 yr)</option>
+            <option value="180">180 months (15 yr)</option>
+            <option value="120">120 months (10 yr)</option>
+            <option value="84">84 months (7 yr)</option>
+            <option value="60">60 months (5 yr)</option>
+            <option value="36">36 months (3 yr)</option>
+            <option value="12">12 months (1 yr)</option>
+          </select>
+        </div>
+
+        <div class="form-group full">
+          <label>Credit History</label>
+          <div class="toggle-group">
+            <button class="toggle-btn active" data-field="Credit_History" data-value="1">Good — I have paid debts on time</button>
+            <button class="toggle-btn" data-field="Credit_History" data-value="0">Poor — I have missed payments</button>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="predict-btn" id="predictBtn" onclick="predict()">
+        <span class="btn-text">Predict My Approval</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </div>
+
+    <!-- Result Card -->
+    <div class="result-card" id="resultCard">
+      <div class="result-icon" id="resultIcon"></div>
+      <div class="result-text" id="resultText"></div>
+      <div class="confidence-wrap">
+        <span class="confidence-label">Confidence</span>
+        <div class="confidence-bar">
+          <div class="confidence-fill" id="confidenceFill"></div>
+        </div>
+        <span class="confidence-pct" id="confidencePct"></span>
+      </div>
+      <p class="result-note">This is a prediction based on ML model analysis. Actual loan approval depends on the bank's policies.</p>
+    </div>
+  </section>
+
+  <!-- History -->
+  <section class="history-section" id="history-section">
+    <div class="history-header">
+      <h2>Recent Predictions</h2>
+      <button onclick="loadHistory()" class="refresh-btn">Refresh</button>
+    </div>
+    <div class="history-table-wrap">
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Result</th>
+            <th>Confidence</th>
+            <th>Income</th>
+            <th>Loan Amt</th>
+            <th>Credit</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody id="historyBody">
+          <tr><td colspan="7" class="empty-row">No predictions yet. Make your first prediction above!</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>Built with FastAPI + Supabase + ML &nbsp;|&nbsp; LoanIQ &copy; 2024</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
