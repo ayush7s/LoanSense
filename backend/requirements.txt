@@ -3,6 +3,6 @@ flask-cors
 sqlalchemy
 psycopg2-binary
 joblib
-scikit-learn
+scikit-learn==1.7.2
 numpy
 python-dotenv
