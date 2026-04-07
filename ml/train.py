@@ -46,3 +46,4 @@ print(f"Strong profile test: {'Approved ✅' if result == 1 else 'Rejected ❌'}
 
 joblib.dump(model, 'model.pkl')
 print("\nmodel.pkl saved!")
+print("To load the model later, use: model = joblib.load('model.pkl')" )
